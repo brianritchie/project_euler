@@ -4,35 +4,47 @@ import (
   "fmt"
 )
 
+
+
 func main() {
   
-  // This solution will find the largest prime for the given number
+  // Variables
   
-  var a int
+  var number_to_factorise = 15
+  var a,b,c,d,e,length_of_sieve int
   
-  // Create and initialize the maximum limit
+  // Try to find primes then check if prime is a factor
   
-  var number_to_be_factored = 13195
+  /// Implement the Sieve of Eratosthenes
   
-  // Create and initialize an empty slice to store all the factors
-  factors := make([]int,1)
-  factors[0] = 1
+  //// Step 1: Generate the list of integers all the way to the limit and dump them in the slice
   
-  primes := make([]int,1)
-  primes[0] = 1
+  ///// Create Slice and initialize
+  prime_sieve := make([]int,1)
+  prime_sieve[0] = 1
   
-  for a = 2; a <= number_to_be_factored; a++ {
-    if number_to_be_factored % a == 0 {
-      factors = append(factors,a)
-      fmt.Println(factors)
-     
-      
-    }
+  ///// Generate and append numbers to the slice
+  
+  for a = 2; a < number_to_factorise +1; a++ {
+    
+    prime_sieve = append(prime_sieve,a)
   }
   
+ ///// Remove multiples from the slice
   
+  c = 0
+  b = prime_sieve[1]
+  length_of_sieve = len(prime_sieve)
+
+  for d = 0; d < number_to_factorise + 1 && c < number_to_factorise +1; d++ {
+    c = c + b
+    fmt.Println("C is",c)
+    
+   
+    
+  }
+
   
-  fmt.Println(factors)
-  //fmt.Println(primes)
+  fmt.Println(prime_sieve)
   
 }
