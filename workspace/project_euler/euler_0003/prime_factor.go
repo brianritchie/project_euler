@@ -10,8 +10,8 @@ func main() {
   
   // Variables
   
-  var number_to_factorise = 15
-  var a,b,c,d,e,length_of_sieve int
+  var number_to_factorise = 20
+  var a,b,c,d,e,f,length_of_sieve int
   
   // Try to find primes then check if prime is a factor
   
@@ -36,15 +36,30 @@ func main() {
   b = prime_sieve[1]
   length_of_sieve = len(prime_sieve)
 
-  for d = 0; d < number_to_factorise + 1 && c < number_to_factorise +1; d++ {
-    c = c + b
-    fmt.Println("C is",c)
-    
-   
-    
+  for f= 1; f < len(prime_sieve); f++ {
+     b = prime_sieve[f]
+     for d = 0; d < number_to_factorise + 1 && c < number_to_factorise +1; d++ {
+        c = c + b
+        fmt.Println("C is",c)
+
+        if d > 0 {
+          //fmt.Println("This should get checked")
+          for e = length_of_sieve -1; e > 0; e -- {
+            if c % prime_sieve[e] == 0 {
+              fmt.Println(c,"is not a prime and will be removed")
+              prime_sieve = prime_sieve[:e+copy(prime_sieve[e:], prime_sieve[e+1:])]
+              length_of_sieve = len(prime_sieve)
+              break
+            }
+          }
+        }
+
+      }
   }
+  
 
   
   fmt.Println(prime_sieve)
+  fmt.Println(length_of_sieve)
   
 }
